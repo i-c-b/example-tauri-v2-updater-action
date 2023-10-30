@@ -14,14 +14,21 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "example.tauri.icb",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
-      ]
+      ],
+      "updater": {
+        "active": true,
+        "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY3QjQxNzIxMEE4MzMzRkUKUldUK000TUtJUmUwOXhZSStkdmlSU0trRXQxSFIxcHpJRlpoeDRMb2VWNHBudTVpbFJpeXVidVYK",
+        "windows": {
+          "installMode": "passive"
+        }
+      }
     },
     "security": {
       "csp": null
@@ -39,6 +46,11 @@
   "plugins": {
     "shell": {
       "open": true
+    },
+    "updater": {
+      "endpoints": [
+        "https://github.com/i-c-b/example-tauri-v2-updater-action/releases/latest/download/latest.json"
+      ]
     }
   }
 }
