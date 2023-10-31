@@ -14,6 +14,7 @@ fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_window::init())
         .plugin(tauri_plugin_shell::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .invoke_handler(tauri::generate_handler![greet])
         .setup(|app| {
             #[cfg(desktop)]
@@ -26,7 +27,6 @@ fn main() {
 
 #[cfg(desktop)]
 fn check_for_update(app_handle: AppHandle) -> tauri::Result<()> {
-    app_handle.plugin(tauri_plugin_updater::Builder::new().build())?;
     #[cfg(target_os = "linux")]
     let updater_enabled = cfg!(dev) || app_handle.state::<Env>().appimage.is_some();
     #[cfg(not(target_os = "linux"))]
